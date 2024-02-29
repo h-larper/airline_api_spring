@@ -1,8 +1,11 @@
 package com.example.airline_api.controllers;
 
 import com.example.airline_api.models.Flight;
+import com.example.airline_api.models.FlightDTO;
 import com.example.airline_api.models.Passenger;
 import com.example.airline_api.services.FlightService;
+import jakarta.persistence.Id;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -39,20 +42,16 @@ public ResponseEntity<Flight> addNewFlight(@RequestBody Flight flight){
     }
 
     // Book a passenger on a flight
+    @Transactional
     @PatchMapping(value = "/{id}")
-    public ResponseEntity<Flight> addPassengerToFlight(){
-
-        return
+    public ResponseEntity<Flight> addPassengerToFlight(@RequestBody FlightDTO flightDTO, @PathVariable long id){
+        Flight flight = flightService.bookPassenger(flightDTO, id);
+        return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
 }
 
-//    // Book passenger on a flight
-//    @PatchMapping(value = "/{id}")
-//    public ResponseEntity<Flight> addPassengerToFlight(){
-//        return null;
-//    }
-//
+
 //    // Cancel flight
 //    @DeleteMapping(value = "/{id}")
 //    public ResponseEntity cancelFlight(){

@@ -16,7 +16,7 @@ public class PassengerController {
     @Autowired
     PassengerService passengerService;
 
-    
+
     // Display details of all passengers
     @GetMapping
     public ResponseEntity<List<Passenger>> getAllPassengers(){

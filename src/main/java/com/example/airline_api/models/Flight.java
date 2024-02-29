@@ -22,7 +22,7 @@ public class Flight {
     @Column(name = "departure_time")
     private String departureTime;
     @JsonIgnoreProperties({"flights"})
-    @ManyToMany(mappedBy = "flight")
+    @ManyToMany(mappedBy = "flights")
     private List<Passenger> passengers;
 
     public Flight(String destination, int capacity, String departureDate, String departureTime) {

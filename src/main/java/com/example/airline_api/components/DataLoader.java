@@ -25,27 +25,28 @@ public class DataLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
+        Passenger laz = new Passenger("Laz", "Laz@laz.com");
+        passengerRepository.save(laz);
+
+        Passenger zsolt = new Passenger("Zsolt", "Zsolt@Zsolt.com");
+        passengerRepository.save(zsolt);
+
+        Passenger drSeuss = new Passenger("Dr Seuss", "DrSeuss@wordygerdy.com");
+        passengerRepository.save(drSeuss);
+
+        Passenger paneer = new Passenger("Paneer", "Paneer@doggyemails.com");
+        passengerRepository.save(paneer);
+
         Flight fabFlight = new Flight("Miami", 2, "Tomorrow", "12:10");
+        fabFlight.addPassenger(zsolt);
+        fabFlight.addPassenger(paneer);
         flightRepository.save(fabFlight);
 
         Flight speedyFlight = new Flight("Bali", 5, "05/04/24", "13:10");
-        flightRepository.save(fabFlight);
+        speedyFlight.addPassenger(laz);
+        speedyFlight.addPassenger(drSeuss);
+        flightRepository.save(speedyFlight);
 
-        Passenger colin = new Passenger("Colin", "Colin@Colin.com");
-        colin.addFlight(speedyFlight);
-        passengerRepository.save(zsolt);
-
-        Passenger zsolt = new Passenger("Zsolt", "Zsolt@Zsolt.com");
-        zsolt.addFlight(fabFlight);
-        passengerRepository.save(zsolt);
-
-        Passenger anna = new Passenger("Anna", "Anna@Anna.com");
-        anna.addFlight(speedyFlight);
-        passengerRepository.save(zsolt);
-
-        Passenger paneer = new Passenger("Paneer", "Paneer@doggyemails.com");
-        panneer.addFlight(fabFlight);
-        passengerRepository.save(paneer);
     }
 
 }

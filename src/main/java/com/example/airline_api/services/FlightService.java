@@ -18,4 +18,8 @@ public class FlightService {
         return flightRepository.findAll();
     }
 
+    public Flight findFlightById(Long id){
+        return flightRepository.findById(id).get();
+    }
+
 }

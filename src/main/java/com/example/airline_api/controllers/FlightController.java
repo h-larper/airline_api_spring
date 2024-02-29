@@ -49,13 +49,10 @@ public ResponseEntity<Flight> addNewFlight(@RequestBody Flight flight){
         return new ResponseEntity<>(flight, HttpStatus.OK);
     }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<String> cancelFlight(@PathVariable Long id){
+        flightService.cancelFlight(id);
+        return new ResponseEntity<String>("That flight has been cancelled :(", HttpStatus.OK);
+    }
+
 }
-
-
-//    // Cancel flight
-//    @DeleteMapping(value = "/{id}")
-//    public ResponseEntity cancelFlight(){
-//        return null;
-//    }
-//
-//}

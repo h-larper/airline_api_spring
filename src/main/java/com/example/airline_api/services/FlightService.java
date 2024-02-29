@@ -46,4 +46,8 @@ public class FlightService {
         return flightRepository.save(updatedFlight);
     }
 
+    public void cancelFlight(Long id){
+        flightRepository.deleteById(id);
+    }
+
 }

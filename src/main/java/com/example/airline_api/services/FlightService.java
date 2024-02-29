@@ -22,4 +22,8 @@ public class FlightService {
         return flightRepository.findById(id).get();
     }
 
+    public Flight addNewFlight(Flight flight) {
+        return flightRepository.save(flight);
+    }
+
 }

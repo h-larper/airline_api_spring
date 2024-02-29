@@ -28,13 +28,25 @@ public class FlightController {
     public ResponseEntity<Flight> getFlightById(@PathVariable Long id) {
         return new ResponseEntity<>(flightService.findFlightById(id), HttpStatus.OK);
     }
+
+
+    // Add details of a new flight
+
+@PostMapping
+public ResponseEntity<Flight> addNewFlight(@RequestBody Flight flight){
+    flightService.addNewFlight(flight);
+    return new ResponseEntity<>(flight, HttpStatus.CREATED);
+    }
+
+    // Book a passenger on a flight
+    @PatchMapping(value = "/{id}")
+    public ResponseEntity<Flight> addPassengerToFlight(){
+
+        return
+    }
+
 }
-//    // Add details of a new flight
-//    @PostMapping
-//    public ResponseEntity<Flight> addNewFlight(){
-//        return null;
-//    }
-//
+
 //    // Book passenger on a flight
 //    @PatchMapping(value = "/{id}")
 //    public ResponseEntity<Flight> addPassengerToFlight(){
